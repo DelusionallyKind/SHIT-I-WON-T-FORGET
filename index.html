@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shit I Won’t Forget</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <div class="logo">
+      <span class="logo-box">SHIT</span>
+      I WON’T FORGET
+    </div>
+
+    <nav class="nav">
+      <button class="filter-btn active" data-filter="all">
+        Everything
+      </button>
+
+      <button class="filter-btn" data-filter="movie">
+        Movies / TV
+      </button>
+
+      <button class="filter-btn" data-filter="game">
+        Games
+      </button>
+    </nav>
+
+    <button id="openModalBtn" class="add-btn">
+      + ADD SOMETHING
+    </button>
+
+  </header>
+
+
+  <main class="container">
+
+    <section class="hero">
+
+      <div>
+        <p class="eyebrow">
+          PERSONAL MEDIA ARCHIVE ✦
+        </p>
+
+        <h1>
+          things to
+          <span class="pink">watch</span>
+          &
+          <span class="blue">play</span>.
+        </h1>
+      </div>
+
+      <div class="hero-text">
+        <p>
+          Movies, shows and games I refuse to let disappear
+          into the void.
+        </p>
+      </div>
+
+    </section>
+
+
+    <section class="stats">
+
+      <div class="stat-box">
+        <h2 id="totalCount">0</h2>
+        <p>TOTAL</p>
+      </div>
+
+      <div class="stat-box">
+        <h2 id="backlogCount">0</h2>
+        <p>BACKLOG</p>
+      </div>
+
+      <div class="stat-box">
+        <h2 id="finishedCount">0</h2>
+        <p>FINISHED</p>
+      </div>
+
+      <div class="stat-box">
+        <h2 id="likedCount">0</h2>
+        <p>LIKED</p>
+      </div>
+
+    </section>
+
+
+    <section class="controls">
+
+      <div class="left-controls">
+
+        <button
+          class="status-btn active"
+          data-status="all"
+        >
+          ALL
+        </button>
+
+        <button
+          class="status-btn"
+          data-status="want"
+        >
+          WANT TO
+        </button>
+
+        <button
+          class="status-btn"
+          data-status="finished"
+        >
+          WATCHED / PLAYED
+        </button>
+
+      </div>
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="SEARCH YOUR LIST..."
+      />
+
+    </section>
+
+
+    <section
+      id="cardGrid"
+      class="card-grid"
+    >
+    </section>
+
+  </main>
+
+
+  <!-- MODAL -->
+
+  <div id="modal" class="modal hidden">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="modal-small">
+            ARCHIVE ENTRY
+          </p>
+
+          <h2 id="modalTitle">
+            Add Something
+          </h2>
+        </div>
+
+        <button
+          id="closeModalBtn"
+          class="close-btn"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="itemForm">
+
+        <input
+          type="hidden"
+          id="itemId"
+        />
+
+
+        <label for="title">
+          TITLE
+        </label>
+
+        <input
+          type="text"
+          id="title"
+          required
+          placeholder="Zodiac"
+        />
+
+
+        <label for="type">
+          TYPE
+        </label>
+
+        <select id="type">
+
+          <option value="movie">
+            Movie / TV
+          </option>
+
+          <option value="game">
+            Game
+          </option>
+
+        </select>
+
+
+        <label>
+          COVER IMAGE
+        </label>
+
+
+        <div class="image-area">
+
+          <div
+            id="imagePreviewContainer"
+            class="image-preview-container"
+          >
+
+            <div
+              id="imagePlaceholder"
+              class="image-placeholder"
+            >
+              ✦
+            </div>
+
+            <img
+              id="imagePreview"
+              class="image-preview hidden"
+              alt="Preview"
+            />
+
+          </div>
+
+
+          <div class="image-options">
+
+            <label
+              for="imageUpload"
+              class="upload-btn"
+            >
+              UPLOAD IMAGE
+            </label>
+
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              hidden
+            />
+
+
+            <span class="or">
+              OR
+            </span>
+
+
+            <input
+              type="text"
+              id="imageUrl"
+              placeholder="Paste image URL..."
+            />
+
+
+            <button
+              type="button"
+              id="removeImageBtn"
+              class="remove-image-btn"
+            >
+              REMOVE IMAGE
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <label for="notes">
+          NOTES
+        </label>
+
+        <textarea
+          id="notes"
+          rows="4"
+          placeholder="No notes. Just vibes."
+        ></textarea>
+
+
+        <label for="status">
+          STATUS
+        </label>
+
+        <select id="status">
+
+          <option value="want">
+            Want To
+          </option>
+
+          <option value="finished">
+            Watched / Played
+          </option>
+
+        </select>
+
+
+        <label for="liked">
+          DID I LIKE IT?
+        </label>
+
+        <select id="liked">
+
+          <option value="unknown">
+            Haven't decided
+          </option>
+
+          <option value="yes">
+            Yes
+          </option>
+
+          <option value="no">
+            No
+          </option>
+
+        </select>
+
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="save-btn"
+          >
+            SAVE
+          </button>
+
+          <button
+            type="button"
+            id="cancelBtn"
+            class="cancel-btn"
+          >
+            CANCEL
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
