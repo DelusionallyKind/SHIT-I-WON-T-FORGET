@@ -4,347 +4,276 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shit I Won’t Forget</title>
+  <meta name="description" content="A chaotic little memory archive for games, films and shows that actually meant something." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
 
   <header class="topbar">
-
-    <div class="logo">
+    <a class="logo" href="#top" aria-label="Shit I Won't Forget home">
       <span class="logo-box">SHIT</span>
       I WON’T FORGET
-    </div>
+    </a>
 
-    <nav class="nav">
-      <button class="filter-btn active" data-filter="all">
-        Everything
-      </button>
-
-      <button class="filter-btn" data-filter="movie">
-        Movies / TV
-      </button>
-
-      <button class="filter-btn" data-filter="game">
-        Games
-      </button>
+    <nav class="nav" aria-label="Media filters">
+      <button class="filter-btn active" data-filter="all">Everything</button>
+      <button class="filter-btn" data-filter="movie">Movies / TV</button>
+      <button class="filter-btn" data-filter="game">Games</button>
     </nav>
 
-    <button id="openModalBtn" class="add-btn">
-      + ADD SOMETHING
-    </button>
-
+    <button id="openModalBtn" class="add-btn">+ ADD MEMORY</button>
   </header>
 
-
-  <main class="container">
-
-    <section class="hero">
-
+  <main id="top" class="container">
+    <section class="hero pixel-panel">
       <div>
-        <p class="eyebrow">
-          PERSONAL MEDIA ARCHIVE ✦
-        </p>
-
+        <p class="eyebrow">PERSONAL TASTE DATABASE // MEMORY CORE_01</p>
         <h1>
-          things to
-          <span class="pink">watch</span>
-          &
-          <span class="blue">play</span>.
+          shit that<br>
+          <span class="pink">altered</span> my
+          <span class="blue">brain</span>.
         </h1>
       </div>
-
       <div class="hero-text">
-        <p>
-          Movies, shows and games I refuse to let disappear
-          into the void.
-        </p>
+        <p>Not a watchlist. Not a backlog. A record of what hit, what missed, why it mattered and what Past Me would force Current Me to try next.</p>
+        <div class="terminal-line"><span>&gt;</span> archive.status = <strong>emotionally compromised</strong><span class="blink">_</span></div>
       </div>
-
     </section>
 
-
-    <section class="stats">
-
-      <div class="stat-box">
-        <h2 id="totalCount">0</h2>
-        <p>TOTAL</p>
-      </div>
-
-      <div class="stat-box">
-        <h2 id="backlogCount">0</h2>
-        <p>BACKLOG</p>
-      </div>
-
-      <div class="stat-box">
-        <h2 id="finishedCount">0</h2>
-        <p>FINISHED</p>
-      </div>
-
-      <div class="stat-box">
-        <h2 id="likedCount">0</h2>
-        <p>LIKED</p>
-      </div>
-
+    <section class="stats" aria-label="Archive statistics">
+      <div class="stat-box"><h2 id="totalCount">0</h2><p>TOTAL</p></div>
+      <div class="stat-box"><h2 id="backlogCount">0</h2><p>BACKLOG</p></div>
+      <div class="stat-box"><h2 id="finishedCount">0</h2><p>FINISHED</p></div>
+      <div class="stat-box"><h2 id="likedCount">0</h2><p>LIKED</p></div>
     </section>
 
+    <section class="brain-grid">
+      <article class="brain-card pick-card pixel-panel">
+        <p class="eyebrow">ANTI-CHOICE-PARALYSIS MACHINE</p>
+        <h2>WHAT THE FUCK SHOULD I PICK?</h2>
+        <p>Tell the archive your current state. It gives you one answer. No doomscrolling through 400 saved things.</p>
+        <button id="openPickerBtn" class="primary-big">DECIDE FOR ME →</button>
+      </article>
 
-    <section class="controls">
+      <article class="brain-card pixel-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR PATTERNS</p>
+            <h2>TASTE DNA</h2>
+          </div>
+          <span class="tiny-chip">AUTO-GENERATED</span>
+        </div>
+        <div id="tasteDNA" class="taste-dna">
+          <p class="muted">Add a few finished memories with tags and moods. Your contradictions will expose themselves here.</p>
+        </div>
+      </article>
 
+      <article class="brain-card pixel-panel memory-card">
+        <p class="eyebrow">ARCHAEOLOGY MODE</p>
+        <h2>MEMORY GLITCH</h2>
+        <div id="memoryGlitch" class="memory-glitch">
+          <p class="muted">Nothing old enough to haunt you yet.</p>
+        </div>
+        <button id="rerollMemoryBtn" class="ghost-btn">REROLL MEMORY</button>
+      </article>
+    </section>
+
+    <section class="controls pixel-panel">
       <div class="left-controls">
-
-        <button
-          class="status-btn active"
-          data-status="all"
-        >
-          ALL
-        </button>
-
-        <button
-          class="status-btn"
-          data-status="want"
-        >
-          WANT TO
-        </button>
-
-        <button
-          class="status-btn"
-          data-status="finished"
-        >
-          WATCHED / PLAYED
-        </button>
-
+        <button class="status-btn active" data-status="all">ALL</button>
+        <button class="status-btn" data-status="want">WANT TO</button>
+        <button class="status-btn" data-status="finished">WATCHED / PLAYED</button>
       </div>
-
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="SEARCH YOUR LIST..."
-      />
-
+      <input id="searchInput" type="search" placeholder="SEARCH TITLE / TAG / MEMORY..." autocomplete="off" />
     </section>
 
-
-    <section
-      id="cardGrid"
-      class="card-grid"
-    >
-    </section>
-
+    <section id="cardGrid" class="card-grid" aria-live="polite"></section>
   </main>
 
-
-  <!-- MODAL -->
-
-  <div id="modal" class="modal hidden">
-
-    <div class="modal-content">
-
+  <!-- ADD / EDIT MODAL -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content pixel-panel">
       <div class="modal-header">
-
         <div>
-          <p class="modal-small">
-            ARCHIVE ENTRY
-          </p>
-
-          <h2 id="modalTitle">
-            Add Something
-          </h2>
+          <p class="modal-small">ARCHIVE ENTRY // WRITE IT BEFORE YOU FORGET IT</p>
+          <h2 id="modalTitle">Add Something</h2>
         </div>
-
-        <button
-          id="closeModalBtn"
-          class="close-btn"
-        >
-          ×
-        </button>
-
+        <button id="closeModalBtn" class="close-btn" aria-label="Close">×</button>
       </div>
 
-
       <form id="itemForm">
+        <input type="hidden" id="itemId" />
 
-        <input
-          type="hidden"
-          id="itemId"
-        />
-
-
-        <label for="title">
-          TITLE
-        </label>
-
-        <input
-          type="text"
-          id="title"
-          required
-          placeholder="Zodiac"
-        />
-
-
-        <label for="type">
-          TYPE
-        </label>
-
-        <select id="type">
-
-          <option value="movie">
-            Movie / TV
-          </option>
-
-          <option value="game">
-            Game
-          </option>
-
-        </select>
-
-
-        <label>
-          COVER IMAGE
-        </label>
-
-
-        <div class="image-area">
-
-          <div
-            id="imagePreviewContainer"
-            class="image-preview-container"
-          >
-
-            <div
-              id="imagePlaceholder"
-              class="image-placeholder"
-            >
-              ✦
-            </div>
-
-            <img
-              id="imagePreview"
-              class="image-preview hidden"
-              alt="Preview"
-            />
-
+        <div class="form-grid two">
+          <div>
+            <label for="title">TITLE</label>
+            <input type="text" id="title" required placeholder="Perfect Blue" />
           </div>
-
-
-          <div class="image-options">
-
-            <label
-              for="imageUpload"
-              class="upload-btn"
-            >
-              UPLOAD IMAGE
-            </label>
-
-            <input
-              type="file"
-              id="imageUpload"
-              accept="image/*"
-              hidden
-            />
-
-
-            <span class="or">
-              OR
-            </span>
-
-
-            <input
-              type="text"
-              id="imageUrl"
-              placeholder="Paste image URL..."
-            />
-
-
-            <button
-              type="button"
-              id="removeImageBtn"
-              class="remove-image-btn"
-            >
-              REMOVE IMAGE
-            </button>
-
+          <div>
+            <label for="type">TYPE</label>
+            <select id="type">
+              <option value="movie">Movie / TV</option>
+              <option value="game">Game</option>
+            </select>
           </div>
-
         </div>
 
+        <label>COVER IMAGE</label>
+        <div class="image-area">
+          <div id="imagePreviewContainer" class="image-preview-container">
+            <div id="imagePlaceholder" class="image-placeholder">?</div>
+            <img id="imagePreview" class="image-preview hidden" alt="Preview" />
+          </div>
+          <div class="image-options">
+            <label for="imageUpload" class="upload-btn">UPLOAD IMAGE</label>
+            <input type="file" id="imageUpload" accept="image/*" hidden />
+            <span class="or">OR</span>
+            <input type="url" id="imageUrl" placeholder="Paste image URL..." />
+            <button type="button" id="removeImageBtn" class="remove-image-btn">REMOVE IMAGE</button>
+          </div>
+        </div>
 
-        <label for="notes">
-          NOTES
-        </label>
+        <div class="form-grid two">
+          <div>
+            <label for="status">STATUS</label>
+            <select id="status">
+              <option value="want">Want To</option>
+              <option value="finished">Watched / Played</option>
+            </select>
+          </div>
+          <div>
+            <label for="liked">DID IT HIT?</label>
+            <select id="liked">
+              <option value="unknown">Haven't decided</option>
+              <option value="yes">Yes — injected into brain</option>
+              <option value="no">No — rejected by nervous system</option>
+            </select>
+          </div>
+        </div>
 
-        <textarea
-          id="notes"
-          rows="4"
-          placeholder="No notes. Just vibes."
-        ></textarea>
+        <div class="form-grid two">
+          <div>
+            <label for="source">HOW DID I FIND THIS?</label>
+            <input id="source" type="text" placeholder="Cecilia / Reddit / random 2AM spiral" />
+          </div>
+          <div>
+            <label for="timeMinutes">TIME COMMITMENT (MIN)</label>
+            <input id="timeMinutes" type="number" min="0" step="1" placeholder="100" />
+          </div>
+        </div>
 
+        <div class="form-grid two">
+          <div>
+            <label for="moodBefore">MOOD BEFORE</label>
+            <select id="moodBefore">
+              <option value="">— choose —</option>
+              <option>braindead</option>
+              <option>curious</option>
+              <option>sad</option>
+              <option>restless</option>
+              <option>cozy</option>
+              <option>chaotic</option>
+              <option>social</option>
+              <option>focused</option>
+            </select>
+          </div>
+          <div>
+            <label for="moodAfter">MOOD AFTER</label>
+            <select id="moodAfter">
+              <option value="">— choose —</option>
+              <option>obsessed</option>
+              <option>destroyed</option>
+              <option>comforted</option>
+              <option>energized</option>
+              <option>confused</option>
+              <option>underwhelmed</option>
+              <option>haunted</option>
+              <option>happy</option>
+            </select>
+          </div>
+        </div>
 
-        <label for="status">
-          STATUS
-        </label>
+        <label for="reason">WHY DID I SAVE / PICK THIS?</label>
+        <textarea id="reason" rows="2" placeholder="The atmosphere looked disgusting in exactly the way I like."></textarea>
 
-        <select id="status">
+        <label for="loved">WHAT DID I LOVE?</label>
+        <textarea id="loved" rows="2" placeholder="Slow tension, weird dialogue, morally questionable people..."></textarea>
 
-          <option value="want">
-            Want To
-          </option>
+        <label for="annoyed">WHAT ANNOYED ME?</label>
+        <textarea id="annoyed" rows="2" placeholder="Third act lost me / movement felt floaty / nothing..."></textarea>
 
-          <option value="finished">
-            Watched / Played
-          </option>
+        <label for="tags">TASTE TAGS</label>
+        <input id="tags" type="text" placeholder="slow-burn, surreal, rainy, investigation, co-op" />
+        <p class="field-help">Comma-separated. These power Taste DNA and the picker.</p>
 
-        </select>
-
-
-        <label for="liked">
-          DID I LIKE IT?
-        </label>
-
-        <select id="liked">
-
-          <option value="unknown">
-            Haven't decided
-          </option>
-
-          <option value="yes">
-            Yes
-          </option>
-
-          <option value="no">
-            No
-          </option>
-
-        </select>
-
+        <label for="notes">NOTES / MEMORY</label>
+        <textarea id="notes" rows="4" placeholder="No notes. Just vibes."></textarea>
 
         <div class="form-actions">
-
-          <button
-            type="submit"
-            class="save-btn"
-          >
-            SAVE
-          </button>
-
-          <button
-            type="button"
-            id="cancelBtn"
-            class="cancel-btn"
-          >
-            CANCEL
-          </button>
-
+          <button type="submit" class="save-btn">SAVE TO MEMORY</button>
+          <button type="button" id="cancelBtn" class="cancel-btn">CANCEL</button>
         </div>
-
       </form>
-
     </div>
-
   </div>
 
+  <!-- PICKER MODAL -->
+  <div id="pickerModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+    <div class="modal-content picker-content pixel-panel">
+      <div class="modal-header">
+        <div>
+          <p class="modal-small">THE MACHINE HAS OPINIONS</p>
+          <h2 id="pickerTitle">Decide for me.</h2>
+        </div>
+        <button id="closePickerBtn" class="close-btn" aria-label="Close">×</button>
+      </div>
+
+      <div id="pickerQuestions" class="picker-questions">
+        <div>
+          <label for="pickType">WHAT KIND OF DAMAGE?</label>
+          <select id="pickType">
+            <option value="all">Anything</option>
+            <option value="movie">Movie / TV</option>
+            <option value="game">Game</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pickTime">HOW MUCH TIME DO YOU HAVE?</label>
+          <select id="pickTime">
+            <option value="0">I don't care</option>
+            <option value="45">45 min or less</option>
+            <option value="90">90 min or less</option>
+            <option value="150">2.5 hours or less</option>
+            <option value="300">5 hours or less</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pickMood">WHAT DO YOU WANT?</label>
+          <select id="pickMood">
+            <option value="">Surprise me</option>
+            <option value="cozy">Comfort me</option>
+            <option value="chaotic">Give me chaos</option>
+            <option value="curious">Make me think</option>
+            <option value="sad">Emotionally damage me</option>
+            <option value="focused">I can actually use my brain</option>
+            <option value="braindead">My brain is soup</option>
+          </select>
+        </div>
+
+        <button id="runPickerBtn" class="primary-big">MAKE THE DECISION</button>
+      </div>
+
+      <div id="pickerResult" class="picker-result hidden"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
